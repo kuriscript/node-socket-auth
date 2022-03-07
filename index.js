@@ -1,6 +1,10 @@
 const Server = require('./models/server');
 require('dotenv').config();
 
+//Db connection
+const { dbConnection } = require('./database/config');
+dbConnection();
+
 const server = new Server();
 
 server.execute();
@@ -13,9 +17,6 @@ server.execute();
 
 // const whiteList = domainsFromEnv.map(domain => domain.trim());
 
-// //Db connection
-// const { dbConnection } = require('./database/config');
-// dbConnection();
 
 // //App de Express
 // const app = express();

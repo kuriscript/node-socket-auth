@@ -1,5 +1,5 @@
 
-const { connectedUser, disconnectedUser } = require('../controllers/socket.');
+const { connectedUser, disconnectedUser } = require('../controllers/socket');
 const { checkJWT } = require('../helpers/jwt');
 const { io } = require('../index');
 

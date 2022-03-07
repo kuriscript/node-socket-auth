@@ -33,8 +33,6 @@ const createUser = async (req, res = response) => {
 
         await user.save();
 
-
-
         res.json({
             ok: true,
             user,
@@ -45,7 +43,7 @@ const createUser = async (req, res = response) => {
     catch (error) {
         return res.status(400).json({
             ok: false,
-            message: "Error creating user",
+            message: "Error comuníquese con el administrador",
         });
     }
 
@@ -54,15 +52,14 @@ const createUser = async (req, res = response) => {
 const loginUser = async (req, res = response) => {
     try {
         const { email, password } = req.body;
+        console.log(email, password);
 
         const user = await User.findOne({ email });
 
         if (!user) {
             return res.status(400).json({
                 ok: false,
-                message: {
-                    email: "User doesn't exist"
-                }
+                message: "User doesn't exist"
             });
         }
 
@@ -71,9 +68,7 @@ const loginUser = async (req, res = response) => {
         if (!validPassword) {
             return res.status(400).json({
                 ok: false,
-                message: {
-                    password: "Password doesn't match"
-                }
+                message: "Password doesn't match"
             });
         }
 
@@ -89,7 +84,7 @@ const loginUser = async (req, res = response) => {
     } catch (error) {
         return res.status(400).json({
             ok: false,
-            message: "Error login user",
+            message: "Error comuníquese con el administrador",
         });
     }
 }
@@ -120,7 +115,7 @@ const renewToken = async (req, res = response) => {
     } catch (error) {
         return res.status(400).json({
             ok: false,
-            message: "Error renew token",
+            message: "Error comuníquese con el administrador",
         });
     }
 }

@@ -21,12 +21,20 @@ class Server {
     }
 
     middlewares() {
+        this.app.use(express.json());
         this.app.use(express.static(path.resolve(__dirname, '../public')));
         this.app.use(cors());
+
     }
 
     configureSockets() {
         new Sockets(this.io);
+    }
+
+    routes() {
+        this.app.use('/api/auth', require('../routes/auth'));
+
+        this.app.use('/api/users', require('../routes/users'));
     }
 
     execute() {
@@ -35,6 +43,9 @@ class Server {
 
         // initialize sockets
         this.configureSockets();
+
+        // initialize routes
+        this.routes();
 
         // initialize server
 
