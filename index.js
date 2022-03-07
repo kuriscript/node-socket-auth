@@ -1,48 +1,54 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
+const Server = require('./models/server');
 require('dotenv').config();
 
-const domainsFromEnv = process.env.ALLOWED_DOMAINS.split(',');
+const server = new Server();
 
-const whiteList = domainsFromEnv.map(domain => domain.trim());
+server.execute();
+// const express = require('express');
+// const path = require('path');
+// const cors = require('cors');
+// require('dotenv').config();
 
-//Db connection
-const { dbConnection } = require('./database/config');
-dbConnection();
+// const domainsFromEnv = process.env.ALLOWED_DOMAINS.split(',');
 
-//App de Express
-const app = express();
+// const whiteList = domainsFromEnv.map(domain => domain.trim());
 
-//Lectura y parseo del body
-app.use(express.json());
+// //Db connection
+// const { dbConnection } = require('./database/config');
+// dbConnection();
 
+// //App de Express
+// const app = express();
 
-//Node Server
-const server = require('http').createServer(app);
-module.exports.io = require('socket.io')(server, {
-    cors: {
-        origin: whiteList,
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        credentials: true
-    }
-});
-require('./sockets/socket');
+// //Lectura y parseo del body
+// app.use(express.json());
 
 
-//public path
-const publicPath = path.resolve(__dirname, 'public');
-app.use(express.static(publicPath));
+// //Node Server
+// const server = require('http').createServer(app);
+// module.exports.io = require('socket.io')(server, {
+//     cors: {
+//         origin: whiteList,
+//         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//         credentials: true
+//     }
+// });
+// require('./sockets/socket');
 
-//routes
 
-app.use('/api/auth', require('./routes/auth'));
+// //public path
+// const publicPath = path.resolve(__dirname, 'public');
+// app.use(express.static(publicPath));
 
-app.use('/api/users', require('./routes/users'));
+// //routes
 
-server.listen(process.env.PORT, (err) => {
+// app.use('/api/auth', require('./routes/auth'));
 
-    if (err) throw new Error(err);
+// app.use('/api/users', require('./routes/users'));
 
-    console.log(`Server is running on port ${process.env.PORT} and enabled to domains ${process.env.ALLOWED_DOMAINS}`);
-});
+// server.listen(process.env.PORT, (err) => {
+
+//     if (err) throw new Error(err);
+
+//     console.log(`Server is running on port ${process.env.PORT} and enabled to domains ${process.env.ALLOWED_DOMAINS}`);
+// });
