@@ -9,10 +9,9 @@ const generateJWT = (uid) => {
         };
 
         jwt.sign(payload, process.env.JWT_KEY, {
-            expiresIn: '24h'
+            expiresIn: '128h'
         }, (err, token) => {
             if (err) {
-                console.log(err);
                 reject('No se pudo create el token', err);
             };
             resolve(token);
