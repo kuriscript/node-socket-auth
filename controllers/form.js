@@ -19,7 +19,9 @@ const addNewForm = async (req, res = response) => {
             return errorMessage(res, 'El formulario con ese nombre ya existe');
         }
 
-        const pathExist = await Form.findOne({ path });
+        const validName = path.replace(/\s/g, '').toLowerCase();
+
+        const pathExist = await Form.findOne({ path: validName });
 
         if (pathExist) {
             return errorMessage(res, 'El formulario con ese path ya existe');
@@ -28,6 +30,7 @@ const addNewForm = async (req, res = response) => {
         const form = new Form(req.body);
 
         form.user = req.uid;
+        form.path = validName;
 
         await form.save();
 
@@ -45,6 +48,8 @@ const updateForm = async (req, res = response) => {
 
     const formId = req.params.id;
 
+    const { path } = req.body;
+
     try {
 
         const form = await Form.findById(formId);
@@ -53,10 +58,19 @@ const updateForm = async (req, res = response) => {
             return errorMessage(res, 'Formulario con ese Id no encontrado');
         }
 
+        const validName = path.replace(/\s/g, '').toLowerCase();
+
+        const pathExist = await Form.findOne({ path: validName, _id: { $ne: formId } });
+
+        if (pathExist) {
+            return errorMessage(res, 'El formulario con ese path ya existe');
+        }
+
         //TODO: agregar validaciones de permisos
 
         const newForm = {
-            ...req.body
+            ...req.body,
+            path: validName
         }
 
         const formUpdated = await Form.findByIdAndUpdate(formId, newForm, { new: true });

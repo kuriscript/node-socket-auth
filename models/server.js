@@ -44,6 +44,7 @@ class Server {
         this.app.use('/api/question-types', require('../routes/questionTypes'));
         this.app.use('/api/validators', require('../routes/validators'));
         this.app.use('/api/questions', require('../routes/questions'));
+        this.app.use('/api/mail', require('../routes/mail'));
     }
 
     execute() {

@@ -19,6 +19,7 @@
     "generate-schema": "^2.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
+    "nodemailer": "^6.7.3",
     "socket.io": "^4.4.1"
   }
 }

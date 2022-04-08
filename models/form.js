@@ -32,6 +32,10 @@ const FormSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
+    },
+    isStep: {
+        type: Boolean,
+        default: false
     }
 });
 
