@@ -16,14 +16,16 @@ class Server {
         //socket.io
         this.io = socketIO(this.server, {
             //configuraciones
-
         });
     }
 
     middlewares() {
-        this.app.use(express.json());
         this.app.use(express.static(path.resolve(__dirname, '../public')));
         this.app.use(cors());
+        this.app.use(express.json());
+        // this.app.use(bodyParser.json());
+        // this.app.use(bodyParser.urlencoded({ extended: true }));
+        this.routes();
 
     }
 
@@ -45,6 +47,9 @@ class Server {
         this.app.use('/api/validators', require('../routes/validators'));
         this.app.use('/api/questions', require('../routes/questions'));
         this.app.use('/api/mail', require('../routes/mail'));
+        this.app.use('/api/reports', require('../routes/reports'));
+        this.app.use('/api/upload', require('../routes/upload'));
+
     }
 
     execute() {
@@ -53,9 +58,6 @@ class Server {
 
         // initialize sockets
         this.configureSockets();
-
-        // initialize routes
-        this.routes();
 
         // initialize server
 

@@ -49,6 +49,10 @@ const QuestionSchema = new Schema({
     order: {
         type: Number,
         default: 0
+    },
+    inReport: {
+        type: Boolean,
+        default: false
     }
 });
 

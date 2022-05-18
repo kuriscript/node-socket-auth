@@ -19,8 +19,6 @@ io.on('connect', client => {
 
     connectedUser(uid);
 
-    console.log('Usuario conectado: ', uid);
-
     client.on('disconnect', () => {
         disconnectedUser(uid);
     });

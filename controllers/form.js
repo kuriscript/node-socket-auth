@@ -241,6 +241,8 @@ const getFinalFormByPath = async (req, res = response) => {
                 }
             })
 
+        console.log(form)
+
         if (!form) {
             return errorMessage(res, 'Formulario con ese Path no encontrado');
         }

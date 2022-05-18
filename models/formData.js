@@ -6,12 +6,11 @@ const FormDataSchema = new Schema({
         type: Date,
         default: Date.now
     },
-});
-
-FormDataSchema.method('toJSON', function () {
-    const { __v, _id, ...object } = this.toObject();
-    object.id = _id;
-    return object;
+    formId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Form',
+        required: true
+    }
 });
 
 FormsData = model('FormsData', FormDataSchema);

@@ -266,7 +266,6 @@ const getQuestionsCategoryById = async (req, res = response) => {
 
         const validators = await Validator.find({ status: true }).sort({ order: 1 });
 
-
         successMessage(res, 'Categoría obtenida correctamente', { category, questionTypes, validators });
 
     } catch (error) {
