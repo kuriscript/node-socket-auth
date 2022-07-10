@@ -1,20 +1,16 @@
 const { Schema, model } = require('mongoose');
 
-const FormDataSchema = new Schema({
-    formData: new Schema({}, { strict: false }),
+const ImageSchema = new Schema({
+    images: new Schema({}, { strict: false }),
     creationDate: {
         type: Date,
         default: Date.now
     },
-    formId: {
+    dataId: {
         type: Schema.Types.ObjectId,
         ref: 'Form',
         required: true
     }
 });
 
-FormsData = model('FormsData', FormDataSchema);
-
-module.exports = {
-    FormsData
-}
+module.exports = model('Image', ImageSchema);

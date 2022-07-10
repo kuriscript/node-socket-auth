@@ -39,8 +39,4 @@ const FormSchema = new Schema({
     }
 });
 
-Form = model('Form', FormSchema);
-
-module.exports = {
-    Form
-};
+module.exports = model('Form', FormSchema);

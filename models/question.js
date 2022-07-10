@@ -56,8 +56,4 @@ const QuestionSchema = new Schema({
     }
 });
 
-Question = model('Question', QuestionSchema);
-
-module.exports = {
-    Question
-};
+module.exports = model('Question', QuestionSchema);

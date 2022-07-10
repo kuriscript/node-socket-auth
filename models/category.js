@@ -27,8 +27,4 @@ const CategorySchema = new Schema({
     }]
 });
 
-Category = model('Category', CategorySchema);
-
-module.exports = {
-    Category
-};
+module.exports = model('Category', CategorySchema);

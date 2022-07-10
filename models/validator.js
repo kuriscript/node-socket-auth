@@ -20,8 +20,4 @@ const ValidatorSchema = new Schema({
     }
 });
 
-Validator = model('Validator', ValidatorSchema);
-
-module.exports = {
-    Validator
-};
+module.exports = model('Validator', ValidatorSchema);

@@ -1,8 +1,8 @@
 const { response } = require("express");
 const { errorMessage, successMessage } = require("../helpers/messages");
-const { Validator } = require("../models/validator");
-const { Form } = require("../models/form");
-const { QuestionType } = require("../models/questionType");
+const Validator = require("../models/validator");
+const Form = require("../models/form");
+const QuestionType = require("../models/questionType");
 
 // CRUD - Form
 
@@ -240,8 +240,6 @@ const getFinalFormByPath = async (req, res = response) => {
                         }]
                 }
             })
-
-        console.log(form)
 
         if (!form) {
             return errorMessage(res, 'Formulario con ese Path no encontrado');

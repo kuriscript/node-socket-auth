@@ -1,11 +1,11 @@
 
 const { successMessage, errorMessage } = require('../helpers/messages');
-const { Category } = require('../models/category');
-const { Form } = require('../models/form');
-const { Options } = require('../models/option');
-const { Question } = require('../models/question');
-const { QuestionType } = require('../models/questionType');
-const { Validator } = require('../models/validator');
+const Category = require('../models/category');
+const Form = require('../models/form');
+const Options = require('../models/option');
+const Question = require('../models/question');
+const QuestionType = require('../models/questionType');
+const Validator = require('../models/validator');
 
 // agregar una categoria un formulario especifico
 

@@ -20,6 +20,4 @@ const QuestionTypeSchema = new Schema({
     }
 });
 
-QuestionType = model('QuestionType', QuestionTypeSchema);
-
-module.exports = { QuestionType };
+module.exports = model('QuestionType', QuestionTypeSchema);

@@ -1,5 +1,5 @@
 const { checkJWT } = require("../helpers/jwt");
-const { Form } = require("./form");
+const Form  = require("./form");
 
 class Sockets {
 
@@ -25,7 +25,7 @@ class Sockets {
             });
 
             socket.on('form-updated', async (data) => {
-
+                console.log('form-updated');
                 const form = await Form.findById(data.id);
                 data.path = form.path;
                 data.isStepAfter = form.isStep;

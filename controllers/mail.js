@@ -7,15 +7,7 @@ const sendMail = async (req, res = response) => {
 
     try {
 
-        console.log(process.env.MAIL_SERVICE);
-        console.log(process.env.MAIL_USER);
-        console.log(process.env.MAIL_PASS);
-
         let transporter = nodemailer.createTransport({
-            //office365 smtp "Outlook365"
-            // host: "smtp.office365.com",
-            // port: 587,
-            // secure: false, // true for 465, false for other ports
             service: process.env.MAIL_SERVICE,
             auth: {
                 user: process.env.MAIL_USER, // generated ethereal user
@@ -25,10 +17,10 @@ const sendMail = async (req, res = response) => {
 
         // send mail with defined transport object
         await transporter.sendMail({
-            from: '', // sender address
+            // from: 'emisor@emisorserver.com', // sender address
             to: to,
             subject: subject,
-            text: text,
+                // text: text,
             html: html
         });
 
@@ -41,6 +33,7 @@ const sendMail = async (req, res = response) => {
     } catch (error) {
 
         return res.status(500).json({
+            ok: false,
             message: 'Error sending email',
             error
         });

@@ -1,6 +1,6 @@
 
 const { errorMessage, successMessage } = require("../helpers/messages");
-const { QuestionType } = require("../models/questionType");
+const QuestionType = require("../models/questionType");
 
 // CRUD - Question Types
 const addNewQuestionType = async (req, res = response) => {

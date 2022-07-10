@@ -1,8 +1,8 @@
 
 const { successMessage, errorMessage } = require('../helpers/messages');
-const { Question } = require('../models/question');
-const { Options } = require('../models/option');
-const { Category } = require('../models/category');
+const Question = require('../models/question');
+const Options = require('../models/option');
+const Category = require('../models/category');
 
 
 // CRUD - Questions

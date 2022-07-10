@@ -1,5 +1,5 @@
 const { successMessage, errorMessage } = require("../helpers/messages");
-const { Validator } = require("../models/validator");
+const Validator = require("../models/validator");
 
 // CRUD - Validators
 

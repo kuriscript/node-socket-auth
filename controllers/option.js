@@ -1,6 +1,6 @@
 const { response } = require('express');
 const { successMessage, errorMessage } = require('../helpers/messages');
-const { Options } = require('../models/option')
+const Options = require('../models/option')
 
 // CRUD - Options
 

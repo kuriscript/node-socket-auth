@@ -1,8 +1,8 @@
 const { response } = require('express');
 const { errorMessage, successMessage } = require('../helpers/messages');
-const { Category } = require('../models/category');
-const { Question } = require('../models/question');
-const { Options } = require('../models/option');
+const Category = require('../models/category');
+const Question = require('../models/question');
+const Options = require('../models/option');
 
 const { dbConnection } = require('../database/config');
 

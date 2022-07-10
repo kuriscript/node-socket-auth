@@ -3,10 +3,11 @@
 */
 
 const { Router } = require('express');
-const { uploadFile } = require('../controllers/upload');
+const { uploadFile, destroyFile } = require('../controllers/upload');
 
 const router = Router();
 
 router.post('/', uploadFile);
+router.delete('/', destroyFile);
 
 module.exports = router;

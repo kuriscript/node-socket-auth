@@ -19,8 +19,4 @@ const OptionSchema = new Schema({
     }
 });
 
-Options = model('Options', OptionSchema);
-
-module.exports = {
-    Options
-};
+module.exports = model('Options', OptionSchema);
